@@ -4,21 +4,21 @@ import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import { nanoid } from "nanoid";
 
-// const savedList = JSON.parse(localStorage.getItem('savedGuestList'));
-// const initialState={
-//   list:savedList ? savedList : []
-// }
+const savedList = JSON.parse(localStorage.getItem('savedGuestList'));
+const initialState={
+  list:savedList ? savedList : []
+}
 
 function App() {
   const [input, setInput] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(initialState.list);
   const [isEditing, setIsEditing] = useState(false);
   const [count, setCount] = useState(0);
   const [editId, setEditId] = useState(null);
 
-  // useEffect(()=>{
-  //   localStorage.setItem('savedGuestList', JSON.stringify(list))
-  // })
+  useEffect(()=>{
+    localStorage.setItem('savedGuestList', JSON.stringify(list))
+  })
 
   const handleChange = (e) => {
     setInput(e.target.value);
